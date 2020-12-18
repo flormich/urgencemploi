@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'subtitle.user.new'|trans }}</h3>
+        {{ 'text.obligatory'|trans }}
+        </div>
+        <br>
+        <div class="red">
+            {{ form_start(form, {
+                attr: {
+                    novalidate: "novalidate",
+                    class: "row"                      
+                }        
+            }
+            ) }}
+            <div class="border col-12 col-lg6">
+                <br>
+                {{ form_errors(form) }}
+                {{ form_row(form.username) }}
+                <br>
+                {{ form_row(form.firstname) }}
+                <br>
+                {{ form_row(form.lastname) }}
+                <br>
+                {{ form_row(form.phone) }}
+                <br>
+                {{ form_row(form.mail) }}
+                <br>
+                {{ form_label(form.role, 'administration.role.yourRole') }}
+                {{ form_widget(form.role) }}
+                <br>
+            </div>
+            <div class="border col-12 col-lg-6">
+                <br><br>
+                {{ form_row(form.password) }}
+                {{ form_row(form.username) }}
+                <br>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">{{ 'button.validate'|trans }}</button>
+            {{ form_end(form) }}
+        </div>
+        {% include 'baseClose.html.php' %}
+    </section>
+{% endblock %}

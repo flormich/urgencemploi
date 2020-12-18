@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+{% block title %}Show Job{% endblock %}
+{% block body %}{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    {# <body> #}
+    <section class="paragraphe subtitle htPage">
+        <div class="black">
+            <h3>{{ 'subtitle.job.show'|trans }}</h3>
+        </div>
+        <div>
+        {# Table with sort #}
+        <div>
+            <nav>
+                <table class="leftMenu">
+                    <thead>
+                        <caption class="captionTrie">{{ 'subtitle.job.sortCategory'|trans }}</caption>
+                    </thead>
+                    <tbody>
+                        {% for CategoryJob in CategoryJobs %}
+                        <tr>
+                            <td class="pointerReadJob" onclick="document.location='{{ path('showJobCategory', 
+                            {'name_cat':CategoryJob.NameCat}) }}'">
+                            {{ CategoryJob.NameCat }}
+                            </td>
+                        </tr> 
+                        {% endfor %}  
+                    </tbody> 
+                </table>
+            </nav>
+        </div>
+        <table class='tableShowJob'>
+            <thead>
+                <caption class="captionTrie">{{ 'subtitle.job.sortJob'|trans }}</caption>
+            </thead>
+            <tbody>            
+                <tr>
+                    <td class="pointerReadJob" onclick="document.location='showJobByTitle'">{{ 'button.trie.byTitle'|trans }}</td>
+                    <td class="pointerReadJob" onclick="document.location='showJobContrast'">{{ 'button.trie.byContrast'|trans }}</td>
+                    <td class="pointerReadJob" onclick="document.location='showJobCity'">{{ 'button.trie.byPostal'|trans }}</td>
+                </tr>               
+            </tbody> 
+        </table>
+        </div><br><br>
+        <div class="navigation">
+            {{ knp_pagination_render(jobs) }}
+        </div>
+    
+        {# render form (AppController\showJob()) #}
+        <div class="read">
+            {% for key, job in jobs %} 
+            <div class="border col-12 col-lg6 read">
+            <tr>
+                <table class="tableShowJob" onclick="document.location='{{ path('showSpecJob', {'id':job.id}) }}'">
+                    <thead>
+                        <caption class="pointerReadJob">{{ job.titleJob }}</caption>
+                    </thead>
+                    <tbody class="pointerReadJob">
+                        <tr>
+                            <th class='nameComp'>{{ job.nameCompjob }}</th>
+                            <th class='descrip'>{{ 'table.description'|trans }}</th>
+                        </tr>
+                        <tr>
+                            <td class="red">{{ job.category.nameCat }}</td>
+                            <td rowspan="4">{{ job.descriptionJob }}</td>
+                        </tr>
+                        <tr><td>{{ job.placesJob }} ({{ job.postalCodeJob }})</td></tr>
+                        <tr><td>{{ job.salaryRangeJob }} Euros</td></tr>
+                        <tr><td>{{ job.contrast.typeContrast }}</td></tr>
+                    </tbody><br><br>
+                </table>
+            </tr>
+            </div>
+            {% endfor %}
+            <br>
+            <div class="navigation">
+                {{ knp_pagination_render(jobs) }}
+            </div>
+            <br>
+        </div>        
+        {% include 'baseClose.html.php' %}
+    </section>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Show Job{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'subtitle.job.show'|trans }}</h3>
+        </div>
+        {% if (app.user.role.value is not defined) %}
+            <div class="red">
+                <h4>{{ 'message.noRole.connexion'|trans }}</h4>
+                <form action="{{ path('index') }}">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                        <a href="{{ path('index') }}" style="color:white; text-decoration:none">{{ 'button.index'|trans }}</a>
+                    </button>
+                </form>
+                <form action="{{ path('showJob') }}">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                        <a href="{{ path('showJob') }}" style="color:white; text-decoration:none">{{ 'button.showJobs'|trans }}</a>                            </button>
+                </form>
+                <form action="login">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                        <a href="login" style="color:white; text-decoration:none">{{ 'button.login'|trans }}</a>
+                    </button>
+                </form>
+            </div>
+        {% else %}
+            <div class="read ">
+                {% for job in jobs %}
+                    {% for UserJob in UserJobs %}
+                    {% if job.id == UserJob.jobs.id %}
+                        <div class="border col-12 col-lg6 read">
+                            <table class='tableShowJob'>
+                                <thead>
+                                    <caption>{{ job.titleJob }}</caption>
+                                </thead>
+                                <tbody class="pointerReadSpecJob">
+                                    <tr>
+                                        <th class='nameComp'>NameCO : {{ job.nameCompjob }}</th>
+                                        <th class='descrip'>{{ 'table.description'|trans }}</th>
+                                        <th class='butt'>{{ job.category.nameCat }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b> Places : </b>{{ job.placesJob }} ({{ job.postalCodeJob }})</td>
+                                        <td rowspan="6">{{ job.descriptionJob }}</td>
+                                        <td rowspan="6">
+                                            {% if ((job.id == UserJob.jobs.id) and (UserJob.users.id == app.user.id)) %}  
+                                            {# update button #}
+                                                <form action="{{ path('updateJob', {'id':job.id, csrf_token:csrf_token('updateJob')}) }}">
+                                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                                                        <a href="{{ path('updateJob', {'id':job.id, csrf_token: csrf_token('updateJob')}) }}" style="color:white; text-decoration:none">{{ 'button.update'|trans }} {{ 'button.offert'|trans }}</a>
+                                                    </button>
+                                                </form>
+                                                {# delete button #}
+                                                <form action="{{ path('deleteJob', {'id':job.id, csrf_token:csrf_token('deleteJob') }) }}">
+                                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                                                        <a href="{{ path('deleteJob', {'id':job.id, csrf_token: csrf_token('deleteJob')}) }}" style="color:white; text-decoration:none">{{ 'button.delete'|trans }} {{ 'button.offert'|trans }}</a>
+                                                    </button>
+                                                </form>
+                                            {% elseif (app.user.role.value is defined) and (app.user.role.value == 'ROLE_CANDIDATE') %}
+                                                <br>
+                                                {# postuler button #}
+                                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit"><a href="mailto:{{ job.mailJob }}?subject=Votre annonce de {{ job.titleJob }}" style="color:white; text-decoration:none">{{ job.mailJob }}</a></button>
+                                                <br>                                
+                                            {% endif %}                                                                
+                                            <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ job.salaryRangeJob }} Euros</td>
+                                    </tr>
+                                    <tr>                        
+                                        <td>{{ job.contrast.typeContrast }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b> Phone : </b>{{ job.phoneJob }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b> Mail : </b>{{ job.mailJob }}</td>
+                                    </tr>                        
+                                    <tr>                        
+                                        <td>
+                                            {% if (job.id == UserJob.jobs.id) %}
+                                                <b> Annonceur : </b>{{ UserJob.users.username }}    
+                                            {% else %}                       
+                                                <b> Annonceur : </b> Inconnu
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <br><br>                
+                            </table>
+                        </div>
+                        {% endif %}
+                    {% endfor %}            
+                {% endfor %}  
+            </div>               
+        {% endif %}
+        {% include 'baseClose.html.php' %}
+    </section>
+{% endblock %}
+
+                            {# <tr> #}
+                            {# <td>{{ job.usersJobs.name }} #}
+                            {# <td>1 = {{ appUserJob.role.name }}</td>
+                            <td>2 = {{ UserJob.name }}</td>
+                            <td>3 = {{ job.id }}</td>
+                            <td>4 = {{ job.contrast.typeContrast }}</td> #}
+                            {# <td>{{ job.UserJob.name }}</td> #}
+                            {# <td>5 = {{ UserJob.jobs.id }}</td>
+                            <td>6 = {{ UserJob.id }}</td>
+                            <td>7 = {{ UserJob.users.id }}</td>
+                            <td>8 = {{ UserJob.users.username }}</td> #}
+                            {# </tr>
+                            </tr> #}

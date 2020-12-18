@@ -1,0 +1,86 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Info Utilisateur{% endblock %}
+{% block body %}{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+
+     <div class="red paragraphe">
+     
+            <br>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>
+                <h4>
+                    Vous vous êtes connecté avec le pseudo :
+                    <b>
+                        Le username identifié eest : {{ app.user.username }}
+                        <br>
+                        Acces : app.user.username
+                        <br>
+                        <br>
+                        Le mail du username identifié est : {{ app.user.mail }}
+                        <br>
+                        Acces : app.user.mail
+                        <br>
+                        <br>                        
+                        Le téléphone du username identifié est : {{ app.user.phone }}
+                        <br>
+                        Acces : app.user.phone
+                        <br>
+                        <br>                        
+                        Le nom de famille du username est : {{ app.user.lastname }}
+                        <br>
+                        Acces : app.user.lastname
+                        <br>
+                        <br>                        
+                        Le prenom du username est : {{ app.user.firstname }}
+                        <br>
+                        Acces : app.user.firstname
+                        <br>
+                        <br>                        
+                        Le password du username est : {{ app.user.password }}
+                        <br>
+                        Acces : app.user.password
+                        <br>
+                        <br>                        
+                        L'Id du user est : {{ app.user.id }}
+                        <br>
+                        Acces : app.user.id
+                        <br>
+                        <br>
+                        Le role du username est : {{ app.user.role.name }}
+                        <br>
+                        Acces : app.user.role.name
+                        <br>
+                        <br>                        
+                        Le role du username est : {{ app.user.role.value }}
+                        <br>
+                        Acces : app.user.role.value
+                        <br>
+                        <br>                        
+                        Le id du role du username est : {{ app.user.role.id }}
+                        <br>
+                        Acces : app.user.role.id
+                        <br>
+                        <br>
+                        csrf_token
+                        {# {{ app.roles.name }} #}
+                    </b>
+                </h4>
+            </p>
+            {% else %}
+            Pas d'utilisateur identifié
+            <meta http-equiv="refresh" content="2; url=index" />
+            {% endif %}
+            <br>
+            <form action="{{ path('index') }}">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                    <a href="index" style="color:white; text-decoration:none">{{ 'button.accueil'|trans }}</a>
+                </button>
+            </form>
+        </div>
+    
+{% endblock %}
+
+

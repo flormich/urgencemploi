@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Update Job{% endblock %}
+{% block body %}{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'subtitle.job.update'|trans }}</h3>
+        {{ 'text.obligatory'|trans }}
+        </div>
+
+        <br>
+        <div class="red">
+            {{ form_start(form, {
+        attr: {
+            novalidate: "novalidate",
+            class: "row"                      
+        }        
+        }) }}
+            <div class="border col-12 col-lg6">
+                <br>
+                {{ form_row(form.title_job) }}
+                <br>
+                {{ form_row(form.places_job) }}
+                <br>
+                {{ form_row(form.postal_code_job) }}
+                <br>
+                {{ form_row(form.nameComp_job) }}
+                <br>
+                {{ form_row(form.salaryRange_job) }}
+                <br>
+                {{ form_row(form.phone_job) }}
+                <br>
+                {{ form_row(form.mail_job) }}
+                <br><br>
+                {{ form_row(form.contrast) }}
+                <br>
+                {{ form_row(form.category) }}
+                <br><br>
+                {{ form_row(form.description_job) }}
+                <br>
+            </div>
+
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" input type="submit">{{ 'button.validate'|trans }}</button>
+            {{ form_end(form) }}
+        </div>
+        {% include 'baseClose.html.php' %}
+    </section>
+{% endblock %}

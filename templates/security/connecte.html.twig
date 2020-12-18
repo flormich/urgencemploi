@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    {% include 'baseOpen.html.php' %}
+
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'subtitle.user.connexion'|trans }}</h3>
+        </div>
+        <div class="red">
+            <br><br>
+            
+
+                <br>
+                <button type="submit">{{ 'appusers.validate'|trans }}</button>
+            </form>
+        </div>
+    {% include 'baseClose.html.php' %}
+    </section>
+{% endblock %}

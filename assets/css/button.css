@@ -1,0 +1,24 @@
+.mdl-button--myColorValidate {
+    background: #22ABE8;
+    color: snow;
+    text-transform: initial;
+}
+
+.mdl-button--myColorCancel {
+    background:#DC2C69;
+    color: snow;
+    text-transform: initial;
+    margin-left: 10px;
+}
+
+.buttonTop
+{
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.buttonBottom
+{
+    margin-bottom: 1em;
+}

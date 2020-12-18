@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}New CategoryJob{% endblock %}
+
+{% block body %}
+    {% include 'baseOpen.html.php' %}
+
+
+    {% block main %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {# <input type="submit"/> #}
+    {{ form_end(form) }}
+
+    {% endblock %}
+    {% include 'baseClose.html.php' %}
+{% endblock %}

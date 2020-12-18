@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidate{% endblock %}
+
+{% block body %}
+    {% include 'baseOpen.html.php' %}
+
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'Connexion' }}</h3>
+        </div>
+
+        <div class="red">
+            <br>
+            {# {% if is_granted('IS_AUTHENTICATED_FULLY') %} #}
+            <p>
+                <h4>
+                    Vous vous êtes connecté avec le pseudo :
+                    <b>
+
+                        {{ app.user.username }}
+                        <br>
+                        {{ app.user.mail }}
+                    </b>
+                </h4>
+            </p>
+            {# {% endif %} #}
+            <br>
+            <form action="{{ path('index') }}">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                    <a href="index" style="color:white; text-decoration:none">{{ 'appusers.accueil'|trans }}</a>
+                </button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'subtitle.user.users'|trans }}</h3>
+        </div>
+        <div class="red">
+            <p>
+                {% for message in flashes %}
+                    <b>
+                        {{ message }}
+                    </b>
+                    <br>
+                {% endfor %}
+            </p>
+            <hr/>
+            {% for user in users %}
+                
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

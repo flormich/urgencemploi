@@ -1,0 +1,25 @@
+.blue .mdl-navigation__link{
+    color: #22ABE8;
+}
+
+.red {
+    color : #DC2C69;
+}
+
+.grey {
+    color : #3B3B3A;
+}
+
+.material-icons {
+    color: #22ABE8;
+}
+
+.bandeau {
+    background-color: #FFFFFF;
+}
+
+.paragraphe {
+    margin: auto;
+    text-align: center;
+    margin-top: 2rem;
+}

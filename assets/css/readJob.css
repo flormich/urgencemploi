@@ -1,0 +1,55 @@
+.tableShowJob, td, th
+
+{
+    border: 1px solid black;
+    margin: auto;
+    border-collapse: collapse;
+}
+.tableShowJob
+
+{
+    width: 75%;
+    margin-left: 7rem;
+    margin: auto;
+}
+
+.leftMenu {
+    float: left;
+    margin-left: 1em;
+    left: 1em;
+    width: 2rem;
+}
+caption {
+    background-color: rgba(220,44,105,0.1);
+    color: black;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: capitalize;
+    line-height: 2em;
+    vertical-align: middle;
+}
+.captionTrie {
+    background-color: rgba(34, 171, 232, 0.3);
+}
+th {
+    background-color: rgba(34, 171, 232, 0.3);
+    color: black;
+    width: 7em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+.pointerReadJob {
+    cursor:pointer;
+}
+.descrip {
+    width: 40rem;
+}
+.butt, .nameComp {
+    width: 11rem;
+}
+.htPage {
+    min-height: 1100px;
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    <section class="paragraphe subtitle">
+        <div class="black">
+            <h3>{{ 'subtitle.user.connexion'|trans }}</h3>
+        </div>
+        <div class="red">
+            <br>
+            <br>
+            {% if error %}
+                <div>{{ error.messageKey(error.messageData, 'security') }}</div>
+            {% endif %}
+            <form action="{{ path('security_login') }}" method="post">
+                <div>
+                    <label for="username" class="formtext">
+                            {{ 'appusers.username'|trans }}
+                    </label>
+                    <input type="text" name="_username"/>
+                </div>
+                <br>
+                <div>
+                    <label for="password">
+                            {{ 'appusers.password'|trans }}</label>
+                    <input type="password" name="_password"/>
+                </div>
+                <br>
+                <div>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">{{ 'button.login'|trans }}</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit"><a href="new" style="color:white; text-decoration:none">{{ 'button.register'|trans }}</a></button>
+                </div>
+            </form>
+        </div>
+        {% include 'baseClose.html.php' %}
+    </section>
+{% endblock %}
+            

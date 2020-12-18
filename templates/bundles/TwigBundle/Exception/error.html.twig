@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}UrgencEmploi{% endblock %}
+
+{% block body %}
+    {% include 'baseOpen.html.php' %} 
+    <h2 class="h2">{{ status_code }}:
+    <pan class="h3">{{ status_text }}</span>
+    <h2>
+    {% include 'baseClose.html.php' %}
+{% endblock %}

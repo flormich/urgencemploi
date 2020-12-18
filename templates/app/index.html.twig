@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UrgencEmploi{% endblock %}
+
+{% block body %}{% endblock %}
+{% block main %}
+    {% include 'baseOpen.html.php' %}
+    <p class="h2 col-12">
+        <br><br><br>
+        <section class="paragraphe subtitle">
+
+            <div class="black">
+                <h3>Bienvenue</h3>
+            </div>
+            Bienvenue sur le site d'Urgence Emploi.
+            <br>
+            Le site des urgences et de l'emploi.
+            <br><br>
+            <div>
+                {% if app.user.username is defined %}
+                    <form action="{{ path('logout') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorCancel" type="submit">
+                            <a href="logout" style="color:white; text-decoration:none">{{ 'button.logout'|trans }}</a>
+                        </button>
+                    </form>
+                    {% if app.user.role.name == 'admin' %}
+                    <br>
+                    <form action="{{ path('newRoles') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                            <a href="newRoles" style="color:white; text-decoration:none">{{ 'button.newRoles'|trans }}</a>
+                        </button>
+                    </form>
+                    <form action="{{ path('newCategoryJob') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                            <a href="newCategoryJob" style="color:white; text-decoration:none">{{ 'button.newCategoryJob'|trans }}</a>
+                        </button>
+                    </form>
+                    <form action="{{ path('newContrast') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                            <a href="newContrast" style="color:white; text-decoration:none">{{ 'button.newContrast'|trans }}</a>
+                        </button>
+                    </form>
+                    {% endif %}
+                {% else %}
+                    <form action="{{ path('usersNew') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                            <a href="new" style="color:white; text-decoration:none">{{ 'button.register'|trans }}</a>
+                        </button>
+                    </form>
+                    <br>
+                    <form action="{{ path('security_login') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
+                            <a href="login" style="color:white; text-decoration:none">{{ 'button.login'|trans }}</a>
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
+           
+        </section>
+    </p>
+{% endblock %}
